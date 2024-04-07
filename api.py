@@ -120,7 +120,7 @@ def checker(card, month, year, cvv):
                 'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; client_secure="I5YT8xAq2g2FN7v"; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); bpt="4UUd.4UUddS8s-1712451486473"; language="en_US"; locale="en_US"; _gat_UA-114148720-1=1; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451540.5.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9STZNZnEtVXZWSG5jbklWLVBUZE5scG51X1UyRzRVMngmbj12TnZMdnNFSWctVlM0MzVEVnItSkJnJm09MSZ0PUFBQUFBR1lSNzlZJnJtPTEmcnQ9QUFBQUFHWVI3OVkmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451544.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100, allow_redirects=False)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, allow_redirects=False)
             client = response.cookies.get('client_secure') 
             bpt = response.cookies.get('bpt')
             
@@ -146,7 +146,7 @@ def checker(card, month, year, cvv):
                 'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); language="en_US"; locale="en_US"; client_secure={client}; _gat_UA-114148720-1=1; bpt={bpt}; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451577.30.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9T2RGTjVHSFdITG9feE9vR2dFNngwYVdaaEtfVHNTN3Umbj1Fa3N6M1JMZUdKMG9ySExoSFhOWWpnJm09MSZ0PUFBQUFBR1lSN19zJnJtPTEmcnQ9QUFBQUFHWVI3X3Mmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451586.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
                                     
                     
                     
@@ -174,7 +174,7 @@ def checker(card, month, year, cvv):
                     'Content-Type': 'application/x-www-form-urlencoded'
                     }
 
-                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100, allow_redirects=False)
+                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, allow_redirects=False)
                 if "Redirection" in response.text:
                     raise RequisicaoException()
                     
