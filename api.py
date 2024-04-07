@@ -94,7 +94,7 @@ def checker(card, month, year, cvv):
 
         
         try:
-            time.sleep(2)
+            time.sleep(5)
             p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
@@ -180,7 +180,7 @@ def checker(card, month, year, cvv):
                     
                         
                         
-                time.sleep(4)
+                time.sleep(5)
 
 
 
@@ -216,7 +216,8 @@ def checker(card, month, year, cvv):
                 else:
                 # print(Fore.LIGHTBLACK_EX + f"RETESTANDO: {x} #JacaChecker")    
                     print(Fore.RED + 'Consultar Adm !' )
-                    return {"code": 1, "mensagem": "Consultar Adm ! #JacaChecker<br>"} 
+                    reteste(card, month, year, cvv)
+                    #return {"code": 1, "mensagem": "Consultar Adm ! #JacaChecker<br>"} 
             except:
                 print("reteste loco")
                 #reteste(card, month, year, cvv)     
