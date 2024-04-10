@@ -94,8 +94,8 @@ def checker(card, month, year, cvv):
 
         
         try:
-            
-            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
+            time.sleep(5)
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
                 year = year[2:]
@@ -208,7 +208,15 @@ def checker(card, month, year, cvv):
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False)
- 
+            
+            
+            
+            time.sleep(5)
+
+
+
+
+            
             if "Redirection" in response.text:
                 raise RequisicaoException()
                 
