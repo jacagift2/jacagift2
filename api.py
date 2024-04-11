@@ -94,7 +94,7 @@ def checker(card, month, year, cvv):
 
         
         try:
-            time.sleep(5)
+            
             p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
@@ -154,7 +154,7 @@ def checker(card, month, year, cvv):
             client_secure = response.headers.get('client_secure')
             
       
-            time.sleep(3)
+            
 
 
             url = "https://www.brownpapertickets.com/addtocart/6286439"
@@ -262,6 +262,7 @@ def checker(card, month, year, cvv):
             reteste(card, month, year, cvv)
             
         except RequisicaoException:
+            time.sleep(15)
             print(Fore.LIGHTWHITE_EX + f"RETESTANDO 302: {card}|{month}|{year}|{cvv}")
             reteste(card, month, year, cvv)
 
