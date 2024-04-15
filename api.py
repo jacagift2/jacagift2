@@ -65,7 +65,7 @@ def Saldo():
         print(resultado.text)
         if '"status":"ready"' in resultado.text:
             return resultado.json()["solution"]["gRecaptchaResponse"]
-        time.sleep(1)
+        
         
         
 def api_bin(bin):
@@ -218,7 +218,7 @@ def checker(card, month, year, cvv):
         
         if response.status_code == 200:
             
-            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
             start_time = time.time() 
 
 
@@ -340,7 +340,7 @@ def checker(card, month, year, cvv):
                 'Content-Type': 'text/plain'
                 }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            time.sleep(2)
+            
             elapsed_time = time.time() - start_time
             MSegundos = round(elapsed_time, 2)
             
