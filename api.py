@@ -214,10 +214,10 @@ def checker(card, month, year, cvv):
         tel = random.randint(1111,9999)
         tel2 = random.randint(111,999)
         tel3 = random.randint(111,999)
-        time.sleep(2)
+        
         
         if response.status_code == 200:
-            time.sleep(5)
+            
             p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
             start_time = time.time() 
 
