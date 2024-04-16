@@ -183,6 +183,7 @@ def saldo(card, month, year, cvv):
     
     
 def checker(card, month, year, cvv):
+    time.sleep(6)
     try:
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
