@@ -195,6 +195,8 @@ def definir_tipo_cartao(card):
     
 def checker(card, month, year, cvv):
     try:
+        time.sleep(3)
+
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
                 'Host': 'randomuser.me',
