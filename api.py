@@ -396,7 +396,7 @@ def checker(card, month, year, cvv):
                 if 'getSelectedFinancingProduct' in response.text:
                     raise RequisicaoException()
                 
-                #time.sleep(2)
+                time.sleep(2)
                 elapsed_time = time.time() - start_time
                 MSegundos = round(elapsed_time, 2)
                 
