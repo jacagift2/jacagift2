@@ -102,7 +102,7 @@ class RequisicaoException(Exception):
 def reteste(card, month, year, cvv):
         checker(card, month, year, cvv)
 
-keys = ["7492", "15273", "4908", "5255", "402"]
+keys = ["7492", "15273", "4908", "5255", "402", "11720", "7775", "2062", "551", "10108", "7653"]
 def rkey():
     return random.choice(keys)
             # https://payzer.com/Payment/ExternalMake/businessId/7492     
@@ -110,10 +110,23 @@ def rkey():
             # https://payzer.com/Payment/ExternalMake/businessId/4908     
             # https://payzer.com/Payment/ExternalMake/businessId/5255       
             # https://payzer.com/Payment/ExternalMake/businessId/2118/embedded/y
-            # https://www.payzer.com/index.php/Payment/ExternalMake/b/5693
-            # https://www.payzer.com/index.php/Payment/ExternalMake/b/155
+            # https://payzer.com/index.php/Payment/ExternalMake/b/5693
+            # https://payzer.com/index.php/Payment/ExternalMake/b/155
             # https://payzer.com/Payment/ExternalMake/businessId/402
-
+            # https://payzer.com/Payment/ExternalMake/businessId/11720
+            # https://payzer.com/index.php/Payment/ExternalMake/b/7368
+            # https://payzer.com/index.php/Payment/ExternalMake/nt/PM-8ae08ce357d0a0f937c905942dd7a52a
+            # https://payzer.com/Payment/ExternalMake/businessId/7775
+            # https://payzer.com/Payment/ExternalMake/businessId/2062
+            # https://payzer.com/Payment/ExternalMake/businessId/551
+            # https://payzer.com/index.php/Payment/ExternalMake/b/2712
+            # https://payzer.com/Payment/ExternalMake/businessId/10108
+            # https://payzer.com/Payment/ExternalMake/businessId/7653
+            # https://payzer.com/Payment/ExternalMake/businessId/2118/embedded/y
+            #
+            #
+            #
+            #
 def definir_tipo_cartao(card):
     if card.startswith("4"):
         return "VISA"
