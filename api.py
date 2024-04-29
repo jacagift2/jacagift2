@@ -272,7 +272,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p, timeout=100)
             if 'location' in response.headers:
                 loocation = response.headers.get('location')
 
@@ -297,7 +297,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
             pm = pegarItem(response.text, 'name="nt" value="','"')
             
             
@@ -353,7 +353,7 @@ def checker(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p, timeout=100)
             if 'location' in response.headers:
                 loocation = response.headers.get('location')          
                              
@@ -379,7 +379,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-                response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+                response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
             
                 url = f"https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}"
 
@@ -405,11 +405,11 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
                 if 'getSelectedFinancingProduct' in response.text:
                     raise RequisicaoException()
                 
-                #time.sleep(2)
+                time.sleep(1)
                 elapsed_time = time.time() - start_time
                 MSegundos = round(elapsed_time, 2)
                 
