@@ -102,7 +102,7 @@ class RequisicaoException(Exception):
 def reteste(card, month, year, cvv):
         checker(card, month, year, cvv)
     
-keys = ["7492", "15273", "4908", "5255", "402", "11720", "7775", "2062", "551", "10108", "7653", "14781", "4285", "8828",
+keys = ["7492", "15273", "4908", "5255", "402", "11720", "7775", "2062", "551", "10108", "7653", "14781", "4285", "8828"]
 
 def rkey():
     return random.choice(keys)
