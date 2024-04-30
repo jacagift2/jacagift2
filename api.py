@@ -240,7 +240,7 @@ def checker(card, month, year, cvv):
         tel = random.randint(1111,9999)
         tel2 = random.randint(111,999)
         tel3 = random.randint(111,999)
-        time.sleep(2)
+        #time.sleep(2)
         
         if response.status_code == 200:
             
