@@ -428,12 +428,12 @@ def Saldo(card, month, year, cvv):
                 print(Fore.GREEN + f"{x} #JacaChecker")  
                 return {"codee": 0, "mensageme": f"{x} #JacaChecker<br>"}  
             
-            elif 'EXPIRED' in response.text:  
-                saldo = pegarItem(response.text, 'ssl_account_balance=','&')
-                bin = api_bin(card[:6])
-                x = f"{card}|{month}|{year}|{cvv}| {bin} -  Status: Expired  | Saldo: {saldo}"         
-                print(Fore.YELLOW + f"{x} #JacaChecker")  
-                return {"codee": 0, "mensageme": f"{x} #JacaChecker<br>"}
+            # elif 'EXPIRED' in response.text:  
+            #     saldo = pegarItem(response.text, 'ssl_account_balance=','&')
+            #     bin = api_bin(card[:6])
+            #     x = f"{card}|{month}|{year}|{cvv}| {bin} -  Status: Expired  | Saldo: {saldo}"         
+            #     print(Fore.YELLOW + f"{x} #JacaChecker")  
+            #     return {"codee": 0, "mensageme": f"{x} #JacaChecker<br>"}
             
             elif 'process-transaction-response' in response.text:
                 #message = response.json()['message']  
@@ -683,13 +683,13 @@ def checker(card, month, year, cvv):
                     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                     # print(Fore.GREEN + f"{x} #JacaChecker") 
                     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
-                elif 'Expired' in response.text:
-                    saldousdo = Saldo(card, month, year, cvv)
-                    # bin = api_bin(card[:6])              
-                    # x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                    
-                    # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
-                    # print(Fore.GREEN + f"{x} #JacaChecker") 
-                    return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
+                # elif 'Expired' in response.text:
+                #     saldousdo = Saldo(card, month, year, cvv)
+                #     # bin = api_bin(card[:6])              
+                #     # x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                    
+                #     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                #     # print(Fore.GREEN + f"{x} #JacaChecker") 
+                #     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
                         
                 elif 'error' in response.text:  
                     msg = pegarItem(response.text, 'reason: ','<')
