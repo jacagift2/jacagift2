@@ -372,7 +372,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=500)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
             
             
             if 'RETRY' in response.text:
