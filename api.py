@@ -683,7 +683,6 @@ def checker(card, month, year, cvv):
                     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                     # print(Fore.GREEN + f"{x} #JacaChecker") 
                     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
-                    
                 elif 'Expired' in response.text:
                     #saldousdo = Saldo(card, month, year, cvv)
                     bin = api_bin(card[:6])              
