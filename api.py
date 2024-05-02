@@ -217,7 +217,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
             
                         
             url = f"https://www.eduwhere.com/secure/enroll_username_validate.php?username={username}"
@@ -239,7 +239,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=1, i'
             }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False)
             
 
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
@@ -266,7 +266,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
             
                            
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
@@ -293,7 +293,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
             ssl_invoice_number = pegarItem(response.text, "name='ssl_invoice_number' id='ssl_invoice_number' value='","'")
             
             
@@ -316,7 +316,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=1, i'
             }
 
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("GET", url, headers=headers, data=payload, verify=False)
             
 
 
@@ -345,7 +345,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
             
             recap = SaldoTask()
             url = "https://www.eduwhere.com/secure/enroll_payment_confirm.php"
@@ -372,7 +372,7 @@ def Saldo(card, month, year, cvv):
             'priority': 'u=0, i'
             }
 
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p, timeout=500)
             
             
             if 'RETRY' in response.text:
