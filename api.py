@@ -373,7 +373,7 @@ def Saldo(card, month, year, cvv):
             }
 
             response = requests.request("POST", url, headers=headers, data=payload, verify=False, proxies=p)
-            print(response.text)
+            
             
             if 'RETRY' in response.text:
                 saldo = pegarItem(response.text, 'ssl_account_balance=','&')
